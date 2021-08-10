@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
-public class SubjectManagement {
-
-	public void start()
+public class SubjectManagement
+{
+	public static void start()
 	{
 		ArrayList<Subject> SubList = new ArrayList<Subject>();
 		int option = 0;
@@ -33,7 +33,7 @@ public class SubjectManagement {
 					}
 				}
 	}
-	private void menu()
+	private static void menu()
 	{
 		Helper.line(30, "=");
 		System.out.println("Subject Management");
@@ -104,3 +104,4 @@ public class SubjectManagement {
 	}
 	
 }
+

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class SubjectManagementTest {
+public class SubjectManagementTest {
 	
 	//XIAO QUAN
 	private Subject sub1;
@@ -16,7 +16,12 @@ class SubjectManagementTest {
 	
 	private ArrayList<Subject> subList;
 	
-	void setUp() throws Exception 
+	public SubjectManagementTest()
+	{
+		super();
+	}
+	
+	public void setUp() throws Exception 
 	{
 		sub1 = new Subject ("English", "E01", "Language");
 		sub2 = new Subject ("Math", "E02", "General");
