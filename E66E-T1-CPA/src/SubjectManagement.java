@@ -15,17 +15,20 @@ public class SubjectManagement
 						String name = Helper.readString("Subject Name > ");
 						String code = Helper.readString("Subject Code > ");
 						String type = Helper.readString("Subject Type > ");
-						doAddSubject(SubList, name , code, type);
+						String add = doAddSubject(SubList, name , code, type);
+						System.out.println(add);
 					}
 					else if (option == 2)
 					{
-						String keyword = Helper.readString("Enter Subject Name");
-						doViewSubject(SubList, keyword);
+						String keyword = Helper.readString("Enter Subject Name > ");
+						String view = doViewSubject(SubList, keyword);
+						System.out.println(view);
 					}
 					else if (option == 3)
 					{
 						String code = Helper.readString("Enter Subject Code to Delete > ");
-						doDeleteSubject(SubList,code);
+						String del = doDeleteSubject(SubList,code);
+						System.out.println(del);
 					}
 					else if (option == 4)
 					{
@@ -61,7 +64,6 @@ public class SubjectManagement
 					output = "The Subject already exists!";
 					return output;
 				}
-				
 			}
 			x.add(subj1);
 			output = "New Subject was Successfully Added";
@@ -73,7 +75,7 @@ public class SubjectManagement
 	public static String doViewSubject(ArrayList<Subject> x, String y)
 	{
 		int counter = 0;
-		String output = String.format("%-15s %-15s %-15s", "Name", "Subject Code", "Subject Course");
+		String output = String.format("%-15s %-15s %-15s\n", "Name", "Subject Code", "Subject Course");
 		for (Subject item : x)
 		{
 			if (item.getName().equalsIgnoreCase(y) || item.getName().contains(y))
