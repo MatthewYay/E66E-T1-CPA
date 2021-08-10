@@ -10,11 +10,12 @@ import org.junit.jupiter.api.Test;
 public class SubjectManagementTest {
 	
 	//XIAO QUAN
-	private Subject sub1;
-	private Subject sub2;
-	private Subject sub3;
+	private Subject sub1 = new Subject ("English", "E01", "Language");
+	private Subject sub2 = new Subject ("Math", "E02", "General");
+	private Subject sub3 = new Subject ("Chinese", "M01", "Language");
 	
-	private ArrayList<Subject> subList;
+	private ArrayList<Subject> subList = new ArrayList<Subject>();
+	
 	
 	public SubjectManagementTest()
 	{
@@ -23,18 +24,14 @@ public class SubjectManagementTest {
 	
 	public void setUp() throws Exception 
 	{
-		sub1 = new Subject ("English", "E01", "Language");
-		sub2 = new Subject ("Math", "E02", "General");
-		sub3 = new Subject ("Chinese", "M01", "Language");
+		subList = new ArrayList<Subject>();
+	}
+	@Test
+	public void testAddSubject()
+	{
 		subList.add(sub1);
 		subList.add(sub2);
 		subList.add(sub3);
-		
-		subList = new ArrayList<Subject>();
-	}
-
-	public void testAddSubject()
-	{
 		//Test if The item will be rejected if one item is blank
 		String name = "Geography";
 		String code = "E03";
@@ -58,9 +55,12 @@ public class SubjectManagementTest {
 		SubjectManagement.doAddSubject(subList, name3, code3, type3);
 		assertEquals("Test that the object was added successfully", y+1,subList.size());
 	}
-
+	@Test
 	public void testViewSubject()
 	{
+		subList.add(sub1);
+		subList.add(sub2);
+		subList.add(sub3);
 		//Test that the search method returns expected results
 		String keyword = "english";
 		String test = SubjectManagement.doViewSubject(subList,keyword);
@@ -78,11 +78,14 @@ public class SubjectManagementTest {
 		assertEquals("Test that the returned output is the error message", output1, test1);
 		
 	}
-	
+	@Test
 	public void testDeleteSubject()
 	{
+		subList.add(sub1);
+		subList.add(sub2);
+		subList.add(sub3);
 		//Test when deleting a subject, it will inform the user that it was successfully deleted.
-		String output = "The Item Was Successfully Deleted";
+		String output = "The Subject Was Successfully Deleted";
 		String keyword = "E01";
 		String test = SubjectManagement.doDeleteSubject(subList, keyword);
 		assertEquals("Test that the returned message is correct", output, test);

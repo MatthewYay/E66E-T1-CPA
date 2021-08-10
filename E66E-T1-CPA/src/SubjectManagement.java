@@ -42,29 +42,31 @@ public class SubjectManagement
 		System.out.println(output);
 	}
 	
-	public static void doAddSubject(ArrayList<Subject> x, String name, String code, String type)
+	public static String doAddSubject(ArrayList<Subject> x, String name, String code, String type)
 	{
 		
 		Subject subj1 = new Subject(name, code, type);
-		
+		String output = "";
 		if(name.equals("") || code.equals("") || type.equals(""))
 		{
-			for (Subject item : x)
-			{
-				if (item.getCode().equals(code))
-				{
-					System.out.println("The Subject already exists!");
-				}
-				else
-				{
-					x.add(subj1);
-					System.out.println("New Subject was Successfully Added");
-				}
-			}
+			output = "There Was An Error Adding A New Subject";
+			return output;
 		}
 		else
 		{
-			System.out.println("There Was An Error Adding A New Subject");
+			for (int i = 0; i < x.size();i++)
+			{
+				if (x.get(i).getCode().equals(code))
+				{
+					output = "The Subject already exists!";
+					return output;
+				}
+				
+			}
+			x.add(subj1);
+			output = "New Subject was Successfully Added";
+			return output;
+			
 		}
 		
 	}
@@ -74,7 +76,7 @@ public class SubjectManagement
 		String output = String.format("%-15s %-15s %-15s", "Name", "Subject Code", "Subject Course");
 		for (Subject item : x)
 		{
-			if (item.getName().contains(y))
+			if (item.getName().equalsIgnoreCase(y) || item.getName().contains(y))
 			{
 				counter++;
 				output += String.format("%-15s %-15s %-15s", item.getName(), item.getCode(), item.getType());
